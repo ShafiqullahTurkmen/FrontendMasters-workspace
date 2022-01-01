@@ -61,3 +61,9 @@ game.name.push('Mr. Green');
 
 console.log(game);
 
+console.log("***************************************************");
+
+var obj = {first: 'Dan', last: 'Coelho'};
+var first = obj.first;
+var last = obj.last;
+

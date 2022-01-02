@@ -63,7 +63,63 @@ console.log(game);
 
 console.log("***************************************************");
 
-var obj = {first: 'Dan', last: 'Coelho'};
-var first = obj.first;
-var last = obj.last;
+  // ES6 Destructuring
 
+const [first, second] = [true, false]; // In arrays must be in order
+console.log(first, second);
+
+var obj = {firstProperty: 'Dan', secondProperty: 'Coelho'};
+const {secondProperty, firstProperty} = obj; // order does'nt matter in objects
+console.log(firstProperty, secondProperty);
+
+const myObj = { 'name': 'Rusty', 'room': 'kitchen', 'weapon': 'candlestick'};
+const {room, weapon} = myObj;
+console.log(room, weapon);
+
+
+//Destructuring Arrays
+
+var [a, b] = [1, 2];
+console.log(a, b);  
+// => 1 2
+
+//omit certain values
+var [a, , b] = [1, 2, 3];
+console.log(a, b);
+// => 1 3
+
+//combine with spread/rest operator (accumulates the rest of the values)
+var [a, ...b] = [1, 2, 3, 4, 5]
+console.log(a, b);
+// => 1 [ 2, 3, 4, 5 ]
+
+//swap variables easily without temp
+var a = 1, b = 2;
+// var temp = a;
+//  a = b;
+//  b = temp;
+
+var [b, a] = [a, b];
+console.log(a, b);
+// => 2 1
+
+// Advance deep nested arrays 
+var [a, [b, [c, d]]] = [1, [2, [[[3, 4], 5], 6]]]
+console.log("a:", a, "b:", b, "c:", c, "d:", d);
+// => a: 1 b: 2 c: [ [ 3, 4 ], 5 ] d: 6
+
+// === Objects
+
+var { user: x} = { user: 5};
+console.log(x);
+// => 5
+
+// Fail-safe
+var {user: x} = {user2: 5};
+console.log(x);
+// => undefined
+
+// More values
+var { prop: x, prop2: y} = { prop: 5, prop2: 10 };
+console.log(x, y);
+// => 5 10

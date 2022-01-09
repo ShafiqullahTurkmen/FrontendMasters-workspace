@@ -1,4 +1,5 @@
-/* variables declared here - these are the colors for our pages, as well as the font stacks and sizes. */
+/* Variables declared here - these are the colors for our pages, as well as the font stacks and sizes. */
+
 :root {
   --black: #171321;
   --dkblue: #0d314b;
@@ -11,16 +12,23 @@
   --mono: "Oxygen mono", monospace;
   --sans: Oxygen, sans-serif;
 }
+
+
 /* border box model: https://css-tricks.com/box-sizing/ */
+
 html {
   box-sizing: border-box;
 }
+
 *,
 *::before,
 *::after {
   box-sizing: inherit;
 }
+
+
 /* generic styles for the page */
+
 body {
   padding: 0;
   margin: 0;
@@ -29,11 +37,13 @@ body {
   color: var(--white);
   font-size: var(--font-size);
 }
+
 h1,
 h2,
 h3 {
   margin: 0;
 }
+
 a {
   color: var(--magenta);
 }
@@ -42,22 +52,31 @@ a:hover {
   color: var(--hotmag);
   text-decoration: none;
 }
+img {
+width: 100%;
+}
+
 
 /* background color divs */
 
 .section-plum {
   background-color: var(--plum);
 }
+.section-blue {
+  background-color: var(--dkblue);
+}
 
 .gradient {
-  background: linear-gradient(353deg, rgba(255,23,228,1) 0%, rgba(134,251,251,1) 100%);
+  background: linear-gradient(90deg, rgba(255, 23, 228, 1) 0%, rgba(134, 251, 251, 1) 100%);
   height: 2px;
 }
+
 
 /* intro styles */
 
 #intro {
   padding: 4rem 1rem 10rem 1rem;
+  padding-bottom: 10rem;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -82,8 +101,8 @@ a:hover {
 
 #intro h2 {
   font-size: 4rem;
-  font-weight: normal;
 }
+
 
 /* contact section */
 
@@ -91,24 +110,20 @@ a:hover {
   width: 400px;
   text-align: center;
   margin: 0 auto;
-  padding: 3rem 0;
-}
-
-
-#contact h1 {
-  font-family: var(--sans);
-  font-weight: normal;
+  padding: 4rem 0;
 }
 
 #contact p:last-child {
   margin-top: 3rem;
 }
 
+
 /* navigation */
+
 nav {
   font-family: var(--mono);
   font-size: 80%;
-  padding: 1rem;
+  padding: 4rem 1rem;
 }
 
 nav h1 a {
@@ -125,18 +140,22 @@ nav ul {
   align-items: center;
   gap: 2rem;
 }
+
 nav li:first-child {
   flex-basis: 100%;
   text-align: center;
 }
+
 nav [class*="fa-"] {
   font-size: 150%;
   color: var(--aqua);
 }
+
 nav h1 [class*="fa-"] {
   font-size: 100%;
   color: var(--aqua);
 }
+
 nav a {
   color: white;
   text-decoration: none;
@@ -147,40 +166,66 @@ nav a:hover,
 nav [class*="fa-"]:hover {
   color: var(--magenta);
 }
+
 .button {
   background-color: var(--magenta);
   color: white;
   padding: 0.5rem;
   border-radius: 5px;
-  font-family: var(--mono);
   text-decoration: none;
+  font-family: var(--mono);
 }
 
 .button:hover {
   color: white;
   background-color: var(--hotmag);
 }
-@media (min-width: 850px) {
-  nav {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  nav li:first-child {
-    flex-basis: auto;
-    text-align: left;
-    margin-right: auto;
-  }
+
+/* projects section */
+#projects {
+padding: 4rem 1rem;
+}
+#projects h2 {
+  font-size: 2.5rem;
+  margin-bottom: calc(2.5rem * 1.5);
+}
+#projects h3 {
+  color: var(--aqua);
+}
+
+#projects h4 {
+font-size: 1rem;
+font-family: var(--mono);
+margin: 0;
+}
+.blackbox {
+  padding: 1rem;
+  border-radius: 10px;
+  color: white;
+  background-color: var(--black);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+#projects ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  gap: 1rem;
+  font-size: 1rem;
+}
+#projects img {
+  margin: 2rem 0 4rem 0;
+  padding: 1rem;
+  border-left: 1px solid var(--aqua);
+  border-top: 1px solid var(--aqua);
+  border-radius: 25px;
 }
 
 
-/* footer */
-
-footer h2{
- text-align: center;
- font-family: var(--sans);
- font-weight: normal;
-}
-
+/* footer section */
 
 footer {
   text-align: center;
@@ -198,18 +243,56 @@ footer ul {
   font-size: 3rem;
 }
 
-/* footer ul{
-  display: flex;
-  justify-content: center;
-  list-style-type: none;
-  gap: 0.5rem;
+
+@media (min-width: 800px) {
+article {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
 }
 
-footer [class*="fa-"] {
-  font-size: 200%;
-  margin: 1rem;
+#projects {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-footer p {
-  text-align: center;
-} */
+#projects img {
+  grid-column: 1/6;
+  grid-row: 1/2;
+}
+.text {
+  grid-column: 5/11;
+  grid-row: 1/2;
+  order: 2;
+  text-align: right;
+}
+#projects ul {
+  justify-content: flex-end;
+}
+
+#projects .reverse .text {
+  grid-column: 1/7;
+  order: 2;
+  text-align: left;
+}
+
+#projects .reverse img {
+  grid-column: 6/11;
+  grid-row: 1/2;
+}
+
+#projects .reverse ul {
+  justify-content: flex-start;
+}
+
+}
+@media (min-width: 850px) {
+  nav {
+      max-width: 1200px;
+      margin: 0 auto;
+  }
+  nav li:first-child {
+      flex-basis: auto;
+      text-align: left;
+      margin-right: auto;
+  }
+}
